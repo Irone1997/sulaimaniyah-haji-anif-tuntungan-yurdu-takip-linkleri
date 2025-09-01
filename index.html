@@ -1046,10 +1046,16 @@
             document.getElementById('lastUpdated').textContent = spreadsheetData.lastUpdated;
         }
 
-        // Save data to localStorage
-        function saveToLocalStorage() {
-            localStorage.setItem('spreadsheetData', JSON.stringify(spreadsheetData));
-        }
+       // Save data to localStorage + Firestore
+function saveToLocalStorage() {
+    localStorage.setItem('spreadsheetData', JSON.stringify(spreadsheetData));
+
+    // Simpan juga ke Firestore
+    if (typeof saveToCloud === 'function') {
+        saveToCloud().catch(console.error);
+    }
+}
+
 
         // Load data from localStorage
         function loadFromLocalStorage() {
