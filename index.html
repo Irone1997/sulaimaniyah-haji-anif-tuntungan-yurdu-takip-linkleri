@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sulaimaniyah Haji Anif Tuntungan Yurdu Takip Linkleri</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1a5fb4 0%, #3584e4 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .spreadsheet {
+            padding: 30px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .section-header {
+            background: linear-gradient(to right, #f0f7ff, #e1eeff);
+            padding: 15px 20px;
+            font-size: 1.4rem;
+            color: #1a5fb4;
+            border-bottom: 1px solid #d0e1f9;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .section-header i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .link-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+            padding: 20px;
+            background: #fafafa;
+        }
+        
+        .link-item {
+            padding: 15px;
+            background: white;
+            border-radius: 6px;
+            border-left: 4px solid #3584e4;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .link-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-left-color: #1a5fb4;
+        }
+        
+        .link-item a {
+            text-decoration: none;
+            color: #1a5fb4;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            word-break: break-all;
+        }
+        
+        .link-item a:hover {
+            color: #0d4a8e;
+            text-decoration: underline;
+        }
+        
+        .link-item a::before {
+            content: "🔗";
+            margin-right: 10px;
+            font-size: 16px;
+        }
+        
+        .link-description {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+            margin-left: 28px;
+        }
+        
+        .item-actions {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 8px;
+        }
+        
+        .item-actions button {
+            background: #f0f7ff;
+            border: 1px solid #d0e1f9;
+            border-radius: 4px;
+            padding: 5px 8px;
+            cursor: pointer;
+            color: #1a5fb4;
+            transition: all 0.2s;
+        }
+        
+        .item-actions button:hover {
+            background: #1a5fb4;
+            color: white;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid #eaeaea;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-header {
+                font-size: 1.2rem;
+            }
+            
+            .spreadsheet {
+                padding: 15px;
+            }
+            
+            .link-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .search-box {
+            padding: 15px 20px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #eaeaea;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .search-box input {
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 250px;
+            font-size: 1rem;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .buttons button {
+            padding: 10px 15px;
+            background: #1a5fb4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .buttons button:hover {
+            background: #0d4a8e;
+        }
+        
+        .buttons button.add-section {
+            background: #2ecc71;
+        }
+        
+        .buttons button.add-section:hover {
+            background: #27ae60;
+        }
+        
+        .buttons button.export-btn {
+            background: #9b59b6;
+        }
+        
+        .buttons button.export-btn:hover {
+            background: #8e44ad;
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 500px;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .modal-header h2 {
+            color: #1a5fb4;
+        }
+        
+        .close {
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+        }
+        
+        .close:hover {
+            color: #333;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #555;
+        }
+        
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .form-actions button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        
+        .form-actions button.cancel {
+            background: #e0e0e0;
+            color: #555;
+        }
+        
+        .form-actions button.cancel:hover {
+            background: #d0d0d0;
+        }
+        
+        .form-actions button.save {
+            background: #1a5fb4;
+            color: white;
+        }
+        
+        .form-actions button.save:hover {
+            background: #0d4a8e;
+        }
+        
+        .section-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .section-actions button {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            color: #1a5fb4;
+            font-size: 1.2rem;
+        }
+        
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            background: #2ecc71;
+            color: white;
+            border-radius: 4px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1001;
+        }
+        
+        .toast.error {
+            background: #e74c3c;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+        }
+        
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #c3cfe2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>SULAIMANIYAH HAJI ANIF TUNTUNGAN YURDU TAKIP LİNKLERİ</h1>
+        </header>
+        
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Cari link...">
+            <div class="buttons">
+                <button id="addLinkBtn"><i class="fas fa-plus"></i> Tambah Link</button>
+                <button id="addSectionBtn" class="add-section"><i class="fas fa-folder-plus"></i> Tambah Bagian</button>
+                <button id="exportBtn" class="export-btn"><i class="fas fa-file-export"></i> Ekspor Data</button>
+            </div>
+        </div>
+        
+        <div class="spreadsheet" id="spreadsheet">
+            <!-- Sections will be dynamically added here -->
+        </div>
+        
+        <footer>
+            <p>© 2023 Sulaimaniyah Haji Anif Tuntungan Yurdu - Semua hak dilindungi</p>
+            <p>Terakhir diperbarui: <span id="lastUpdated"></span></p>
+        </footer>
+    </div>
+
+    <!-- Modal for adding/editing links -->
+    <div class="modal" id="linkModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Tambah Link Baru</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="linkTitle">Judul Link</label>
+                    <input type="text" id="linkTitle" placeholder="Masukkan judul link">
+                </div>
+                <div class="form-group">
+                    <label for="linkUrl">URL Link</label>
+                    <input type="text" id="linkUrl" placeholder="https://...">
+                </div>
+                <div class="form-group">
+                    <label for="linkDescription">Deskripsi</label>
+                    <textarea id="linkDescription" placeholder="Masukkan deskripsi link"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="linkSection">Bagian</label>
+                    <select id="linkSection">
+                        <!-- Options will be populated dynamically -->
+                    </select>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button class="cancel">Batal</button>
+                <button class="save" id="saveLinkBtn">Simpan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for adding sections -->
+    <div class="modal" id="sectionModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="sectionModalTitle">Tambah Bagian Baru</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="sectionName">Nama Bagian</label>
+                    <input type="text" id="sectionName" placeholder="Masukkan nama bagian">
+                </div>
+                <div class="form-group">
+                    <label for="sectionIcon">Icon</label>
+                    <select id="sectionIcon">
+                        <option value="📊">📊 Grafik</option>
+                        <option value="👥">👥 Orang</option>
+                        <option value="📅">📅 Kalender</option>
+                        <option value="🏢">🏢 Gedung</option>
+                        <option value="💰">💰 Uang</option>
+                        <option value="📋">📋 Daftar</option>
+                        <option value="🔗">🔗 Link</option>
+                        <option value="📁">📁 Folder</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button class="cancel">Batal</button>
+                <button class="save" id="saveSectionBtn">Simpan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // Data structure to hold our sections and links
+        let spreadsheetData = {
+            sections: [
+                {
+                    id: "section1",
+                    title: "Data Keuangan",
+                    icon: "📊",
+                    links: [
+                        {
+                            id: "link1",
+                            title: "Laporan Keuangan Bulanan",
+                            url: "https://docs.google.com/spreadsheets/d/1abc123def456example1",
+                            description: "Berisi semua data keuangan dan laporan anggaran bulanan yurdu"
+                        },
+                        {
+                            id: "link2",
+                            title: "Biaya Operasional",
+                            url: "https://docs.google.com/spreadsheets/d/2xyz789uvw456example2",
+                            description: "Detail pengeluaran operasional yurdu per minggu"
+                        }
+                    ]
+                },
+                {
+                    id: "section2",
+                    title: "Data Penghuni",
+                    icon: "👥",
+                    links: [
+                        {
+                            id: "link3",
+                            title: "Daftar Penghuni Yurdu",
+                            url: "https://docs.google.com/spreadsheets/d/3mno567rst890example3",
+                            description: "Data lengkap semua penghuni yurdu beserta informasi kontak"
+                        }
+                    ]
+                }
+            ],
+            lastUpdated: new Date().toLocaleDateString('id-ID', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            })
+        };
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set last updated date
+            document.getElementById('lastUpdated').textContent = spreadsheetData.lastUpdated;
+            
+            // Render the spreadsheet
+            renderSpreadsheet();
+            
+            // Setup event listeners
+            setupEventListeners();
+            
+            // Load data from localStorage if available
+            loadFromLocalStorage();
+        });
+
+        // Render the spreadsheet based on data
+        function renderSpreadsheet() {
+            const spreadsheetEl = document.getElementById('spreadsheet');
+            spreadsheetEl.innerHTML = '';
+            
+            if (spreadsheetData.sections.length === 0) {
+                const emptyState = document.createElement('div');
+                emptyState.className = 'empty-state';
+                emptyState.innerHTML = `
+                    <i class="fas fa-folder-open"></i>
+                    <h3>Belum ada bagian</h3>
+                    <p>Klik "Tambah Bagian" untuk membuat bagian pertama</p>
+                `;
+                spreadsheetEl.appendChild(emptyState);
+                return;
+            }
+            
+            spreadsheetData.sections.forEach(section => {
+                const sectionEl = document.createElement('div');
+                sectionEl.className = 'section';
+                sectionEl.id = section.id;
+                
+                const sectionHeader = document.createElement('div');
+                sectionHeader.className = 'section-header';
+                sectionHeader.innerHTML = `
+                    <div>
+                        <i>${section.icon}</i> ${section.title}
+                    </div>
+                    <div class="section-actions">
+                        <button class="edit-section" data-section="${section.id}"><i class="fas fa-edit"></i></button>
+                        <button class="delete-section" data-section="${section.id}"><i class="fas fa-trash"></i></button>
+                    </div>
+                `;
+                
+                const linkGrid = document.createElement('div');
+                linkGrid.className = 'link-grid';
+                
+                if (section.links.length === 0) {
+                    linkGrid.innerHTML = `
+                        <div class="empty-state">
+                            <i class="fas fa-link"></i>
+                            <p>Belum ada link di bagian ini</p>
+                        </div>
+                    `;
+                } else {
+                    section.links.forEach(link => {
+                        const linkItem = document.createElement('div');
+                        linkItem.className = 'link-item';
+                        linkItem.innerHTML = `
+                            <div class="item-actions">
+                                <button class="edit-link" data-link="${link.id}" data-section="${section.id}"><i class="fas fa-edit"></i></button>
+                                <button class="delete-link" data-link="${link.id}" data-section="${section.id}"><i class="fas fa-trash"></i></button>
+                            </div>
+                            <a href="${link.url}" target="_blank">${link.title}</a>
+                            <p class="link-description">${link.description}</p>
+                        `;
+                        linkGrid.appendChild(linkItem);
+                    });
+                }
+                
+                // Add link button for this section
+                const addLinkBtn = document.createElement('button');
+                addLinkBtn.className = 'add-link-to-section';
+                addLinkBtn.setAttribute('data-section', section.id);
+                addLinkBtn.innerHTML = '<i class="fas fa-plus"></i> Tambah Link';
+                addLinkBtn.style.margin = '10px 20px';
+                addLinkBtn.style.padding = '8px 15px';
+                addLinkBtn.style.background = '#1a5fb4';
+                addLinkBtn.style.color = 'white';
+                addLinkBtn.style.border = 'none';
+                addLinkBtn.style.borderRadius = '4px';
+                addLinkBtn.style.cursor = 'pointer';
+                
+                sectionEl.appendChild(sectionHeader);
+                sectionEl.appendChild(linkGrid);
+                sectionEl.appendChild(addLinkBtn);
+                
+                spreadsheetEl.appendChild(sectionEl);
+            });
+            
+            // Reattach event listeners after rendering
+            setupDynamicEventListeners();
+            
+            // Update section dropdown
+            updateSectionDropdown();
+        }
+
+        // Update the section dropdown in the link modal
+        function updateSectionDropdown() {
+            const sectionDropdown = document.getElementById('linkSection');
+            sectionDropdown.innerHTML = '';
+            
+            spreadsheetData.sections.forEach(section => {
+                const option = document.createElement('option');
+                option.value = section.id;
+                option.textContent = section.title;
+                sectionDropdown.appendChild(option);
+            });
+        }
+
+        // Setup event listeners for static elements
+        function setupEventListeners() {
+            // Search functionality
+            document.getElementById('searchInput').addEventListener('input', function(e) {
+                const searchText = e.target.value.toLowerCase();
+                const linkItems = document.querySelectorAll('.link-item');
+                
+                linkItems.forEach(item => {
+                    const linkText = item.textContent.toLowerCase();
+                    if (linkText.includes(searchText)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Add link button
+            document.getElementById('addLinkBtn').addEventListener('click', function() {
+                openLinkModal();
+            });
+            
+            // Add section button
+            document.getElementById('addSectionBtn').addEventListener('click', function() {
+                openSectionModal();
+            });
+            
+            // Export button
+            document.getElementById('exportBtn').addEventListener('click', function() {
+                exportData();
+            });
+            
+            // Modal close buttons
+            document.querySelectorAll('.close, .cancel').forEach(button => {
+                button.addEventListener('click', function() {
+                    closeModals();
+                });
+            });
+            
+            // Save link button
+            document.getElementById('saveLinkBtn').addEventListener('click', function() {
+                saveLink();
+            });
+            
+            // Save section button
+            document.getElementById('saveSectionBtn').addEventListener('click', function() {
+                saveSection();
+            });
+        }
+
+        // Setup event listeners for dynamically created elements
+        function setupDynamicEventListeners() {
+            // Edit link buttons
+            document.querySelectorAll('.edit-link').forEach(button => {
+                button.addEventListener('click', function() {
+                    const linkId = this.getAttribute('data-link');
+                    const sectionId = this.getAttribute('data-section');
+                    openLinkModal(linkId, sectionId);
+                });
+            });
+            
+            // Delete link buttons
+            document.querySelectorAll('.delete-link').forEach(button => {
+                button.addEventListener('click', function() {
+                    const linkId = this.getAttribute('data-link');
+                    const sectionId = this.getAttribute('data-section');
+                    deleteLink(linkId, sectionId);
+                });
+            });
+            
+            // Edit section buttons
+            document.querySelectorAll('.edit-section').forEach(button => {
+                button.addEventListener('click', function() {
+                    const sectionId = this.getAttribute('data-section');
+                    openSectionModal(sectionId);
+                });
+            });
+            
+            // Delete section buttons
+            document.querySelectorAll('.delete-section').forEach(button => {
+                button.addEventListener('click', function() {
+                    const sectionId = this.getAttribute('data-section');
+                    deleteSection(sectionId);
+                });
+            });
+            
+            // Add link to section buttons
+            document.querySelectorAll('.add-link-to-section').forEach(button => {
+                button.addEventListener('click', function() {
+                    const sectionId = this.getAttribute('data-section');
+                    openLinkModal(null, sectionId);
+                });
+            });
+        }
+
+        // Open link modal for adding or editing
+        function openLinkModal(linkId = null, sectionId = null) {
+            const modal = document.getElementById('linkModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const linkTitle = document.getElementById('linkTitle');
+            const linkUrl = document.getElementById('linkUrl');
+            const linkDescription = document.getElementById('linkDescription');
+            const linkSection = document.getElementById('linkSection');
+            
+            if (linkId) {
+                // Editing existing link
+                modalTitle.textContent = "Edit Link";
+                const link = findLink(linkId);
+                linkTitle.value = link.title;
+                linkUrl.value = link.url;
+                linkDescription.value = link.description;
+                
+                // Find which section this link belongs to
+                const section = spreadsheetData.sections.find(s => 
+                    s.links.some(l => l.id === linkId)
+                );
+                if (section) {
+                    linkSection.value = section.id;
+                }
+                
+                // Store current link id and section id in the modal for reference
+                modal.setAttribute('data-current-link', linkId);
+                modal.setAttribute('data-current-section', sectionId);
+            } else {
+                // Adding new link
+                modalTitle.textContent = "Tambah Link Baru";
+                linkTitle.value = "";
+                linkUrl.value = "";
+                linkDescription.value = "";
+                
+                if (sectionId) {
+                    linkSection.value = sectionId;
+                }
+                
+                // Remove any stored ids
+                modal.removeAttribute('data-current-link');
+                modal.removeAttribute('data-current-section');
+            }
+            
+            modal.style.display = "flex";
+        }
+
+        // Open section modal for adding or editing
+        function openSectionModal(sectionId = null) {
+            const modal = document.getElementById('sectionModal');
+            const modalTitle = document.getElementById('sectionModalTitle');
+            const sectionName = document.getElementById('sectionName');
+            const sectionIcon = document.getElementById('sectionIcon');
+            
+            if (sectionId) {
+                // Editing existing section
+                modalTitle.textContent = "Edit Bagian";
+                const section = spreadsheetData.sections.find(s => s.id === sectionId);
+                sectionName.value = section.title;
+                sectionIcon.value = section.icon;
+                
+                // Store current section id in the modal for reference
+                modal.setAttribute('data-current-section', sectionId);
+            } else {
+                // Adding new section
+                modalTitle.textContent = "Tambah Bagian Baru";
+                sectionName.value = "";
+                sectionIcon.value = "📊";
+                
+                // Remove any stored id
+                modal.removeAttribute('data-current-section');
+            }
+            
+            modal.style.display = "flex";
+        }
+
+        // Close all modals
+        function closeModals() {
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.style.display = "none";
+            });
+        }
+
+        // Save link from modal
+        function saveLink() {
+            const modal = document.getElementById('linkModal');
+            const linkTitle = document.getElementById('linkTitle').value;
+            const linkUrl = document.getElementById('linkUrl').value;
+            const linkDescription = document.getElementById('linkDescription').value;
+            const sectionId = document.getElementById('linkSection').value;
+            
+            if (!linkTitle || !linkUrl) {
+                showToast('Judul dan URL link harus diisi', true);
+                return;
+            }
+            
+            // Validate URL format
+            if (!isValidUrl(linkUrl)) {
+                showToast('Format URL tidak valid. Pastikan URL dimulai dengan http:// atau https://', true);
+                return;
+            }
+            
+            const currentLinkId = modal.getAttribute('data-current-link');
+            const currentSectionId = modal.getAttribute('data-current-section');
+            
+            if (currentLinkId) {
+                // Editing existing link
+                const link = findLink(currentLinkId);
+                
+                // If section changed, remove from old section and add to new one
+                if (currentSectionId !== sectionId) {
+                    // Remove from old section
+                    const oldSection = spreadsheetData.sections.find(s => s.id === currentSectionId);
+                    oldSection.links = oldSection.links.filter(l => l.id !== currentLinkId);
+                    
+                    // Add to new section
+                    const newSection = spreadsheetData.sections.find(s => s.id === sectionId);
+                    link.title = linkTitle;
+                    link.url = linkUrl;
+                    link.description = linkDescription;
+                    newSection.links.push(link);
+                } else {
+                    // Just update the link
+                    link.title = linkTitle;
+                    link.url = linkUrl;
+                    link.description = linkDescription;
+                }
+                
+                showToast('Link berhasil diperbarui');
+            } else {
+                // Adding new link
+                const newLink = {
+                    id: 'link' + Date.now(),
+                    title: linkTitle,
+                    url: linkUrl,
+                    description: linkDescription
+                };
+                
+                const section = spreadsheetData.sections.find(s => s.id === sectionId);
+                if (section) {
+                    section.links.push(newLink);
+                    showToast('Link berhasil ditambahkan');
+                } else {
+                    showToast('Error: Bagian tidak ditemukan', true);
+                    return;
+                }
+            }
+            
+            // Update last updated date
+            updateLastUpdated();
+            
+            // Save to localStorage
+            saveToLocalStorage();
+            
+            // Re-render the spreadsheet
+            renderSpreadsheet();
+            
+            // Close the modal
+            closeModals();
+        }
+
+        // Save section from modal
+        function saveSection() {
+            const modal = document.getElementById('sectionModal');
+            const sectionName = document.getElementById('sectionName').value;
+            const sectionIcon = document.getElementById('sectionIcon').value;
+            
+            if (!sectionName) {
+                showToast('Nama bagian harus diisi', true);
+                return;
+            }
+            
+            const currentSectionId = modal.getAttribute('data-current-section');
+            
+            if (currentSectionId) {
+                // Editing existing section
+                const section = spreadsheetData.sections.find(s => s.id === currentSectionId);
+                section.title = sectionName;
+                section.icon = sectionIcon;
+                
+                showToast('Bagian berhasil diperbarui');
+            } else {
+                // Adding new section
+                const newSection = {
+                    id: 'section' + Date.now(),
+                    title: sectionName,
+                    icon: sectionIcon,
+                    links: []
+                };
+                
+                spreadsheetData.sections.push(newSection);
+                
+                showToast('Bagian berhasil ditambahkan');
+            }
+            
+            // Update last updated date
+            updateLastUpdated();
+            
+            // Save to localStorage
+            saveToLocalStorage();
+            
+            // Re-render the spreadsheet
+            renderSpreadsheet();
+            
+            // Close the modal
+            closeModals();
+        }
+
+        // Delete a link
+        function deleteLink(linkId, sectionId) {
+            if (!confirm('Apakah Anda yakin ingin menghapus link ini?')) {
+                return;
+            }
+            
+            const section = spreadsheetData.sections.find(s => s.id === sectionId);
+            if (section) {
+                section.links = section.links.filter(link => link.id !== linkId);
+                
+                // Update last updated date
+                updateLastUpdated();
+                
+                // Save to localStorage
+                saveToLocalStorage();
+                
+                // Re-render the spreadsheet
+                renderSpreadsheet();
+                
+                showToast('Link berhasil dihapus');
+            }
+        }
+
+        // Delete a section
+        function deleteSection(sectionId) {
+            const section = spreadsheetData.sections.find(s => s.id === sectionId);
+            
+            if (!section) return;
+            
+            if (section.links.length > 0) {
+                if (!confirm('Bagian ini masih berisi link. Apakah Anda yakin ingin menghapusnya?')) {
+                    return;
+                }
+            } else {
+                if (!confirm('Apakah Anda yakin ingin menghapus bagian ini?')) {
+                    return;
+                }
+            }
+            
+            spreadsheetData.sections = spreadsheetData.sections.filter(s => s.id !== sectionId);
+            
+            // Update last updated date
+            updateLastUpdated();
+            
+            // Save to localStorage
+            saveToLocalStorage();
+            
+            // Re-render the spreadsheet
+            renderSpreadsheet();
+            
+            showToast('Bagian berhasil dihapus');
+        }
+
+        // Export data as JSON
+        function exportData() {
+            const dataStr = JSON.stringify(spreadsheetData, null, 2);
+            const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+            
+            const exportFileDefaultName = 'spreadsheet-data.json';
+            
+            const linkElement = document.createElement('a');
+            linkElement.setAttribute('href', dataUri);
+            linkElement.setAttribute('download', exportFileDefaultName);
+            linkElement.click();
+            
+            showToast('Data berhasil diekspor');
+        }
+
+        // Find a link by id
+        function findLink(linkId) {
+            for (const section of spreadsheetData.sections) {
+                const link = section.links.find(l => l.id === linkId);
+                if (link) return link;
+            }
+            return null;
+        }
+
+        // Validate URL format
+        function isValidUrl(url) {
+            try {
+                new URL(url);
+                return true;
+            } catch (e) {
+                return false;
+            }
+        }
+
+        // Show toast notification
+        function showToast(message, isError = false) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = isError ? 'toast error' : 'toast';
+            toast.style.opacity = '1';
+            
+            setTimeout(() => {
+                toast.style.opacity = '0';
+            }, 3000);
+        }
+
+        // Update last updated date
+        function updateLastUpdated() {
+            spreadsheetData.lastUpdated = new Date().toLocaleDateString('id-ID', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            document.getElementById('lastUpdated').textContent = spreadsheetData.lastUpdated;
+        }
+
+        // Save data to localStorage
+        function saveToLocalStorage() {
+            localStorage.setItem('spreadsheetData', JSON.stringify(spreadsheetData));
+        }
+
+        // Load data from localStorage
+        function loadFromLocalStorage() {
+            const savedData = localStorage.getItem('spreadsheetData');
+            if (savedData) {
+                spreadsheetData = JSON.parse(savedData);
+                renderSpreadsheet();
+                document.getElementById('lastUpdated').textContent = spreadsheetData.lastUpdated;
+            }
+        }
+    </script>
+
+    <!-- ====== CLOUD SYNC (Firebase) TEMPLATE - FILL YOUR CREDENTIALS ====== -->
+    <script type="module">
+    // --- Replace with your Firebase credentials (Project Settings > General) ---
+    const firebaseConfig = {
+      apiKey: "API_KEY_ANDA",
+      authDomain: "sulaimaniyah-haji-anif-tuntungan-yurdu-takip-linkleri.firebaseapp.com",
+      projectId: "sulaimaniyah-haji-anif-tuntungan-yurdu-takip-linkleri",
+      storageBucket: "sulaimaniyah-haji-anif-tuntungan-yurdu-takip-linkleri.appspot.com",
+      messagingSenderId: "PASTE_SENDER_ID",
+      appId: "PASTE_APP_ID"
+    };
+
+    // If you don't want cloud sync yet, you can leave placeholders above.
+    // The code will try to init Firebase, but fail gracefully and just skip sync.
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getFirestore, doc, getDoc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+    import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+    let app, db, auth, docId;
+
+    function getDocId() {
+      const params = new URLSearchParams(location.search);
+      return params.get('doc') || 'main'; // '?doc=' lets you host multiple datasets
+    }
+
+    async function initFirebase() {
+      app = initializeApp(firebaseConfig);
+      db = getFirestore(app);
+      auth = getAuth(app);
+      // Anonymous auth so anyone with the link can edit (you can restrict later)
+      await signInAnonymously(auth);
+      docId = getDocId();
+    }
+
+    function docRef() {
+      return doc(db, 'linkhub', docId);
+    }
+
+    async function loadFromCloud(render = false) {
+      const snap = await getDoc(docRef());
+      if (snap.exists()) {
+        // Replace local state with cloud state
+        window.spreadsheetData = snap.data();
+        if (render && typeof window.renderSpreadsheet === 'function') {
+          window.renderSpreadsheet();
+          const lu = document.getElementById('lastUpdated');
+          if (lu) lu.textContent = window.spreadsheetData.lastUpdated || lu.textContent;
+        }
+      }
+    }
+
+    async function saveToCloud() {
+      const data = window.spreadsheetData;
+      if (!data) return;
+      await setDoc(docRef(), data);
+    }
+
+    function setupRealtimeSync() {
+      onSnapshot(docRef(), (snap) => {
+        if (snap.exists()) {
+          window.spreadsheetData = snap.data();
+          if (typeof window.renderSpreadsheet === 'function') {
+            window.renderSpreadsheet();
+            const lu = document.getElementById('lastUpdated');
+            if (lu) lu.textContent = window.spreadsheetData.lastUpdated || lu.textContent;
+          }
+        }
+      });
+    }
+
+    function patchLocalSavers() {
+      const origSaveLocal = window.saveToLocalStorage;
+      if (typeof origSaveLocal === 'function') {
+        window.saveToLocalStorage = function() {
+          origSaveLocal.call(window);
+          // Also save to cloud
+          saveToCloud().catch(console.error);
+        };
+      }
+    }
+
+    function addShareAndViewOnly() {
+      // Add a "Share (view-only)" button
+      const btns = document.querySelector('.buttons');
+      if (btns && !document.getElementById('shareBtn')) {
+        const shareBtn = document.createElement('button');
+        shareBtn.id = 'shareBtn';
+        shareBtn.innerHTML = '<i class="fas fa-share"></i> Bagikan (lihat saja)';
+        shareBtn.addEventListener('click', () => {
+          const link = `${location.origin}${location.pathname}?doc=${getDocId()}&mode=view`;
+          navigator.clipboard.writeText(link)
+            .then(() => window.showToast ? window.showToast('Link tampilan-saja disalin') : alert('Link disalin: ' + link));
+        });
+        btns.appendChild(shareBtn);
+      }
+
+      // If opened with '?mode=view', hide all editing UI
+      const params = new URLSearchParams(location.search);
+      const viewOnly = params.get('mode') === 'view';
+      if (viewOnly) {
+        const hideEditing = () => {
+          document.querySelectorAll('#addLinkBtn,#addSectionBtn,.edit-link,.delete-link,.edit-section,.delete-section,.add-link-to-section,.form-actions .save')
+            .forEach(el => { if (el) el.style.display = 'none'; });
+        };
+        hideEditing();
+        const mo = new MutationObserver(hideEditing);
+        mo.observe(document.body, { childList: true, subtree: true });
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        await initFirebase();
+        patchLocalSavers();
+        await loadFromCloud(true);
+        setupRealtimeSync();
+        addShareAndViewOnly();
+      } catch (e) {
+        console.warn('Firebase not configured or failed to init. Cloud sync disabled.', e);
+        // Still add share & view-only UI (sharing local state is not possible, but view-only mode hides edit UI)
+        addShareAndViewOnly();
+      }
+    });
+    </script>
+
+</body>
+</html>
