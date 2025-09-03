@@ -47,6 +47,7 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 15px;
+            position: relative;
         }
         
         .logo {
@@ -57,6 +58,7 @@
             border: 3px solid white;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             margin-right: 15px;
+            cursor: pointer;
         }
         
         .title-container {
@@ -453,28 +455,41 @@
             position: absolute;
             left: 0;
             top: 0;
-            opacity: 0;
             width: 100%;
             height: 100%;
+            opacity: 0;
             cursor: pointer;
+            z-index: 10;
         }
         
         .logo-upload-text {
             position: absolute;
-            bottom: -20px;
+            bottom: -25px;
             left: 50%;
             transform: translateX(-50%);
             background: rgba(0, 0, 0, 0.7);
             color: white;
-            padding: 3px 8px;
+            padding: 5px 10px;
             border-radius: 4px;
             font-size: 0.7rem;
-            opacity: 0;
-            transition: opacity 0.3s;
+            white-space: nowrap;
+            pointer-events: none;
         }
         
-        .logo-upload:hover .logo-upload-text {
+        .logo-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .logo-wrapper:hover .logo-upload-text {
             opacity: 1;
+            visibility: visible;
+        }
+        
+        .logo-upload-text {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
         }
     </style>
 </head>
@@ -484,7 +499,7 @@
     <div class="container">
         <header>
             <div class="logo-container">
-                <div class="logo-upload">
+                <div class="logo-wrapper">
                     <img src="https://via.placeholder.com/80x80/1a5fb4/ffffff?text=LOGO" alt="Logo" class="logo" id="siteLogo">
                     <input type="file" id="logoUpload" class="logo-upload-input" accept="image/*">
                     <div class="logo-upload-text">Klik untuk ganti logo</div>
@@ -829,6 +844,11 @@
             if (savedLogo) {
                 siteLogo.src = savedLogo;
             }
+            
+            // Click on logo triggers file input
+            siteLogo.addEventListener('click', function() {
+                logoUpload.click();
+            });
             
             logoUpload.addEventListener('change', function(e) {
                 const file = e.target.files[0];
