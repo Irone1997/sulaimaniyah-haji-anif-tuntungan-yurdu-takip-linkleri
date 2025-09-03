@@ -28,18 +28,44 @@
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             overflow: hidden;
+            position: relative;
         }
         
         header {
             background: linear-gradient(135deg, #1a5fb4 0%, #3584e4 100%);
             color: white;
-            padding: 30px 20px;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin-right: 15px;
+        }
+        
+        .title-container {
             text-align: center;
         }
         
         h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+            font-size: 2.2rem;
+            margin-bottom: 5px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
         
@@ -171,6 +197,11 @@
             .link-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .logo {
+                width: 60px;
+                height: 60px;
+            }
         }
         
         .search-box {
@@ -188,47 +219,8 @@
             padding: 10px 15px;
             border: 1px solid #ddd;
             border-radius: 4px;
-            width: 250px;
+            width: 100%;
             font-size: 1rem;
-        }
-        
-        .buttons {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-        
-        .buttons button {
-            padding: 10px 15px;
-            background: #1a5fb4;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        
-        .buttons button:hover {
-            background: #0d4a8e;
-        }
-        
-        .buttons button.add-section {
-            background: #2ecc71;
-        }
-        
-        .buttons button.add-section:hover {
-            background: #27ae60;
-        }
-        
-        .buttons button.export-btn {
-            background: #9b59b6;
-        }
-        
-        .buttons button.export-btn:hover {
-            background: #8e44ad;
         }
         
         /* Modal styles */
@@ -376,21 +368,135 @@
             margin-bottom: 15px;
             color: #c3cfe2;
         }
+
+        .cloud-status {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            background: #f8f9fa;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1002;
+        }
+        
+        .cloud-status.connected {
+            background: #2ecc71;
+            color: white;
+        }
+        
+        .cloud-status.disconnected {
+            background: #e74c3c;
+            color: white;
+        }
+        
+        /* Floating buttons */
+        .floating-buttons {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 999;
+            opacity: 0.3;
+            transition: opacity 0.3s ease;
+        }
+        
+        .floating-buttons:hover {
+            opacity: 1;
+        }
+        
+        .floating-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease;
+        }
+        
+        .floating-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .floating-btn.primary {
+            background: #1a5fb4;
+        }
+        
+        .floating-btn.success {
+            background: #2ecc71;
+        }
+        
+        .floating-btn.warning {
+            background: #f39c12;
+        }
+        
+        .floating-btn.danger {
+            background: #e74c3c;
+        }
+        
+        /* Logo upload styles */
+        .logo-upload {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+        
+        .logo-upload-input {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        .logo-upload-text {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .logo-upload:hover .logo-upload-text {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
+    <div class="cloud-status" id="cloudStatus">Menyiapkan cloud...</div>
+    
     <div class="container">
         <header>
-            <h1>SULAIMANIYAH HAJI ANIF TUNTUNGAN YURDU TAKIP LİNKLERİ</h1>
+            <div class="logo-container">
+                <div class="logo-upload">
+                    <img src="https://via.placeholder.com/80x80/1a5fb4/ffffff?text=LOGO" alt="Logo" class="logo" id="siteLogo">
+                    <input type="file" id="logoUpload" class="logo-upload-input" accept="image/*">
+                    <div class="logo-upload-text">Klik untuk ganti logo</div>
+                </div>
+                <div class="title-container">
+                    <h1>SULAIMANIYAH HAJI ANIF TUNTUNGAN YURDU TAKIP LİNKLERİ</h1>
+                </div>
+            </div>
         </header>
         
         <div class="search-box">
             <input type="text" id="searchInput" placeholder="Cari link...">
-            <div class="buttons">
-                <button id="addLinkBtn"><i class="fas fa-plus"></i> Tambah Link</button>
-                <button id="addSectionBtn" class="add-section"><i class="fas fa-folder-plus"></i> Tambah Bagian</button>
-                <button id="exportBtn" class="export-btn"><i class="fas fa-file-export"></i> Ekspor Data</button>
-            </div>
         </div>
         
         <div class="spreadsheet" id="spreadsheet">
@@ -401,6 +507,22 @@
             <p>© 2023 Sulaimaniyah Haji Anif Tuntungan Yurdu - Semua hak dilindungi</p>
             <p>Terakhir diperbarui: <span id="lastUpdated"></span></p>
         </footer>
+    </div>
+
+    <!-- Floating buttons -->
+    <div class="floating-buttons">
+        <div class="floating-btn primary" title="Tambah Link" id="floatAddLink">
+            <i class="fas fa-plus"></i>
+        </div>
+        <div class="floating-btn success" title="Tambah Bagian" id="floatAddSection">
+            <i class="fas fa-folder-plus"></i>
+        </div>
+        <div class="floating-btn warning" title="Ekspor Data" id="floatExport">
+            <i class="fas fa-file-export"></i>
+        </div>
+        <div class="floating-btn danger" title="Sinkronisasi" id="floatSync">
+            <i class="fas fa-sync-alt"></i>
+        </div>
     </div>
 
     <!-- Modal for adding/editing links -->
@@ -531,6 +653,12 @@
             
             // Load data from localStorage if available
             loadFromLocalStorage();
+            
+            // Setup logo upload
+            setupLogoUpload();
+            
+            // Setup floating buttons
+            setupFloatingButtons();
         });
 
         // Render the spreadsheet based on data
@@ -593,22 +721,8 @@
                     });
                 }
                 
-                // Add link button for this section
-                const addLinkBtn = document.createElement('button');
-                addLinkBtn.className = 'add-link-to-section';
-                addLinkBtn.setAttribute('data-section', section.id);
-                addLinkBtn.innerHTML = '<i class="fas fa-plus"></i> Tambah Link';
-                addLinkBtn.style.margin = '10px 20px';
-                addLinkBtn.style.padding = '8px 15px';
-                addLinkBtn.style.background = '#1a5fb4';
-                addLinkBtn.style.color = 'white';
-                addLinkBtn.style.border = 'none';
-                addLinkBtn.style.borderRadius = '4px';
-                addLinkBtn.style.cursor = 'pointer';
-                
                 sectionEl.appendChild(sectionHeader);
                 sectionEl.appendChild(linkGrid);
-                sectionEl.appendChild(addLinkBtn);
                 
                 spreadsheetEl.appendChild(sectionEl);
             });
@@ -648,21 +762,6 @@
                         item.style.display = 'none';
                     }
                 });
-            });
-            
-            // Add link button
-            document.getElementById('addLinkBtn').addEventListener('click', function() {
-                openLinkModal();
-            });
-            
-            // Add section button
-            document.getElementById('addSectionBtn').addEventListener('click', function() {
-                openSectionModal();
-            });
-            
-            // Export button
-            document.getElementById('exportBtn').addEventListener('click', function() {
-                exportData();
             });
             
             // Modal close buttons
@@ -718,13 +817,58 @@
                     deleteSection(sectionId);
                 });
             });
+        }
+
+        // Setup logo upload functionality
+        function setupLogoUpload() {
+            const logoUpload = document.getElementById('logoUpload');
+            const siteLogo = document.getElementById('siteLogo');
             
-            // Add link to section buttons
-            document.querySelectorAll('.add-link-to-section').forEach(button => {
-                button.addEventListener('click', function() {
-                    const sectionId = this.getAttribute('data-section');
-                    openLinkModal(null, sectionId);
-                });
+            // Load logo from localStorage if available
+            const savedLogo = localStorage.getItem('siteLogo');
+            if (savedLogo) {
+                siteLogo.src = savedLogo;
+            }
+            
+            logoUpload.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        siteLogo.src = event.target.result;
+                        // Save to localStorage
+                        localStorage.setItem('siteLogo', event.target.result);
+                        showToast('Logo berhasil diubah');
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        // Setup floating buttons functionality
+        function setupFloatingButtons() {
+            // Add link floating button
+            document.getElementById('floatAddLink').addEventListener('click', function() {
+                openLinkModal();
+            });
+            
+            // Add section floating button
+            document.getElementById('floatAddSection').addEventListener('click', function() {
+                openSectionModal();
+            });
+            
+            // Export floating button
+            document.getElementById('floatExport').addEventListener('click', function() {
+                exportData();
+            });
+            
+            // Sync floating button
+            document.getElementById('floatSync').addEventListener('click', function() {
+                if (typeof saveToCloud === 'function') {
+                    saveToCloud();
+                } else {
+                    showToast('Fitur cloud belum siap', true);
+                }
             });
         }
 
@@ -1015,16 +1159,16 @@
 
         // Validate URL format
         function isValidUrl(url) {
-    if (!url.startsWith('http://') && !url.startsWith('https://')) {
-        url = 'https://' + url;
-    }
-    try {
-        new URL(url);
-        return true;
-    } catch (e) {
-        return false;
-    }
-}
+            if (!url.startsWith('http://') && !url.startsWith('https://')) {
+                url = 'https://' + url;
+            }
+            try {
+                new URL(url);
+                return true;
+            } catch (e) {
+                return false;
+            }
+        }
 
         // Show toast notification
         function showToast(message, isError = false) {
@@ -1049,16 +1193,10 @@
             document.getElementById('lastUpdated').textContent = spreadsheetData.lastUpdated;
         }
 
-       // Save data to localStorage + Firestore
-function saveToLocalStorage() {
-    localStorage.setItem('spreadsheetData', JSON.stringify(spreadsheetData));
-
-    // Simpan juga ke Firestore
-    if (typeof saveToCloud === 'function') {
-        saveToCloud().catch(console.error);
-    }
-}
-
+        // Save data to localStorage
+        function saveToLocalStorage() {
+            localStorage.setItem('spreadsheetData', JSON.stringify(spreadsheetData));
+        }
 
         // Load data from localStorage
         function loadFromLocalStorage() {
@@ -1071,50 +1209,154 @@ function saveToLocalStorage() {
         }
     </script>
 
-    <!-- ====== CLOUD SYNC (Firebase) TEMPLATE - FILL YOUR CREDENTIALS ====== -->
+    <!-- Firebase Integration -->
     <script type="module">
-    // --- Firebase Configuration ---
-    const firebaseConfig = {
-        apiKey: "AIzaSyAuC6SCl5d13Hidawt1xMaHYx2t0FKX7mc",
-        authDomain: "takip-linkleri-free.firebaseapp.com",
-        projectId: "takip-linkleri-free",
-        storageBucket: "takip-linkleri-free.firebasestorage.app",
-        messagingSenderId: "336976957516",
-        appId: "1:336976957516:web:17fb1536a8fed937e964e9"
-    };
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAuC6SCl5d13Hidawt1xMaHYx2t0FKX7mc",
+            authDomain: "takip-linkleri-free.firebaseapp.com",
+            projectId: "takip-linkleri-free",
+            storageBucket: "takip-linkleri-free.firebasestorage.app",
+            messagingSenderId: "336976957516",
+            appId: "1:336976957516:web:17fb1536a8fed937e964e9"
+        };
 
-    // Import Firebase functions
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-    import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-    import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+        // Import Firebase functions
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
-    let app, db, auth, docId;
+        let app, db, auth, docId;
 
-    // Initialize Firebase
-    async function initFirebase() {
-        try {
-            app = initializeApp(firebaseConfig);
-            db = getFirestore(app);
-            auth = getAuth(app);
-            
-            // Sign in anonymously
-            await signInAnonymously(auth);
-            console.log("Firebase initialized successfully");
-            
-            // Set document ID
-            docId = getDocId();
-            
-        } catch (error) {
-            console.error("Firebase initialization error:", error);
+        // Update cloud status indicator
+        function updateCloudStatus(status, message) {
+            const statusEl = document.getElementById('cloudStatus');
+            statusEl.textContent = message;
+            statusEl.className = `cloud-status ${status}`;
         }
-    }
 
-    // Initialize Firebase when DOM is loaded
-    document.addEventListener('DOMContentLoaded', async function() {
+        // Get document ID from URL or use default
+        function getDocId() {
+            const params = new URLSearchParams(location.search);
+            return params.get('doc') || 'main';
+        }
+
+        // Get Firestore document reference
+        function docRef() {
+            return doc(db, 'linkhub', docId);
+        }
+
         // Initialize Firebase
-        await initFirebase();
-    });
-</script>
-    
+        async function initFirebase() {
+            try {
+                updateCloudStatus('', 'Menyiapkan Firebase...');
+                app = initializeApp(firebaseConfig);
+                db = getFirestore(app);
+                auth = getAuth(app);
+                
+                // Sign in anonymously
+                await signInAnonymously(auth);
+                
+                // Set document ID
+                docId = getDocId();
+                
+                updateCloudStatus('connected', 'Cloud Terhubung');
+                console.log("Firebase initialized successfully");
+                
+                // Load data from Firestore
+                await loadFromCloud();
+                
+            } catch (error) {
+                console.error("Firebase initialization error:", error);
+                updateCloudStatus('disconnected', 'Cloud Terputus');
+            }
+        }
+
+        // Function to save data to Firestore
+        async function saveToCloud() {
+            try {
+                if (!db) {
+                    showToast('Firestore belum diinisialisasi', true);
+                    return;
+                }
+                
+                const data = window.spreadsheetData;
+                if (!data) {
+                    showToast('Tidak ada data untuk disimpan', true);
+                    return;
+                }
+                
+                updateCloudStatus('', 'Menyimpan ke cloud...');
+                await setDoc(docRef(), data);
+                
+                updateCloudStatus('connected', 'Cloud Tersimpan');
+                showToast('Data berhasil disimpan ke cloud');
+                
+            } catch (error) {
+                console.error("Error saving to Firestore:", error);
+                updateCloudStatus('disconnected', 'Gagal menyimpan');
+                showToast('Gagal menyimpan ke cloud', true);
+            }
+        }
+
+        // Function to load data from Firestore
+        async function loadFromCloud() {
+            try {
+                if (!db) return;
+                
+                updateCloudStatus('', 'Memuat dari cloud...');
+                const docSnap = await getDoc(docRef());
+                
+                if (docSnap.exists()) {
+                    window.spreadsheetData = docSnap.data();
+                    
+                    // Update UI with loaded data
+                    if (typeof window.renderSpreadsheet === 'function') {
+                        window.renderSpreadsheet();
+                    }
+                    
+                    // Update last updated date
+                    if (window.spreadsheetData.lastUpdated) {
+                        document.getElementById('lastUpdated').textContent = window.spreadsheetData.lastUpdated;
+                    }
+                    
+                    updateCloudStatus('connected', 'Cloud Dimuat');
+                    showToast('Data berhasil dimuat dari cloud');
+                } else {
+                    console.log("No document found, saving current data to Firestore");
+                    // Save local data to Firestore if no document exists
+                    await saveToCloud();
+                }
+            } catch (error) {
+                console.error("Error loading from Firestore:", error);
+                updateCloudStatus('disconnected', 'Gagal memuat');
+            }
+        }
+
+        // Initialize Firebase when DOM is loaded
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Initialize Firebase
+            await initFirebase();
+            
+            // Update the saveToLocalStorage function to also save to cloud
+            const originalSaveToLocalStorage = window.saveToLocalStorage;
+            window.saveToLocalStorage = function() {
+                // Call original function
+                if (originalSaveToLocalStorage) {
+                    originalSaveToLocalStorage();
+                }
+                
+                // Also save to cloud
+                if (typeof saveToCloud === 'function') {
+                    saveToCloud().catch(error => {
+                        console.error("Error saving to cloud:", error);
+                    });
+                }
+            };
+        });
+
+        // Make saveToCloud available globally
+        window.saveToCloud = saveToCloud;
+    </script>
 </body>
 </html>
