@@ -1073,129 +1073,48 @@ function saveToLocalStorage() {
 
     <!-- ====== CLOUD SYNC (Firebase) TEMPLATE - FILL YOUR CREDENTIALS ====== -->
     <script type="module">
-    // --- Replace with your Firebase credentials (Project Settings > General) ---
+    // --- Firebase Configuration ---
     const firebaseConfig = {
-  apiKey: "AIzaSyAuC6SCl5d13Hidawt1xMaHYx2t0FKX7mc",
-  authDomain: "takip-linkleri-free.firebaseapp.com",
-  projectId: "takip-linkleri-free",
-  storageBucket: "takip-linkleri-free.firebasestorage.app",
-  messagingSenderId: "336976957516",
-  appId: "1:336976957516:web:17fb1536a8fed937e964e9"
-};
+        apiKey: "AIzaSyAuC6SCl5d13Hidawt1xMaHYx2t0FKX7mc",
+        authDomain: "takip-linkleri-free.firebaseapp.com",
+        projectId: "takip-linkleri-free",
+        storageBucket: "takip-linkleri-free.firebasestorage.app",
+        messagingSenderId: "336976957516",
+        appId: "1:336976957516:web:17fb1536a8fed937e964e9"
+    };
 
-    // If you don't want cloud sync yet, you can leave placeholders above.
-    // The code will try to init Firebase, but fail gracefully and just skip sync.
-
+    // Import Firebase functions
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-    import { getFirestore, doc, getDoc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+    import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
     import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
     let app, db, auth, docId;
 
-    function getDocId() {
-      const params = new URLSearchParams(location.search);
-      return params.get('doc') || 'main'; // '?doc=' lets you host multiple datasets
-    }
-
+    // Initialize Firebase
     async function initFirebase() {
-      app = initializeApp(firebaseConfig);
-      db = getFirestore(app);
-      auth = getAuth(app);
-      // Anonymous auth so anyone with the link can edit (you can restrict later)
-      await signInAnonymously(auth);
-      docId = getDocId();
-    }
-
-    function docRef() {
-      return doc(db, 'linkhub', docId);
-    }
-
-    async function loadFromCloud(render = false) {
-      const snap = await getDoc(docRef());
-      if (snap.exists()) {
-        // Replace local state with cloud state
-        window.spreadsheetData = snap.data();
-        if (render && typeof window.renderSpreadsheet === 'function') {
-          window.renderSpreadsheet();
-          const lu = document.getElementById('lastUpdated');
-          if (lu) lu.textContent = window.spreadsheetData.lastUpdated || lu.textContent;
+        try {
+            app = initializeApp(firebaseConfig);
+            db = getFirestore(app);
+            auth = getAuth(app);
+            
+            // Sign in anonymously
+            await signInAnonymously(auth);
+            console.log("Firebase initialized successfully");
+            
+            // Set document ID
+            docId = getDocId();
+            
+        } catch (error) {
+            console.error("Firebase initialization error:", error);
         }
-      }
     }
 
-    async function saveToCloud() {
-      const data = window.spreadsheetData;
-      if (!data) return;
-      await setDoc(docRef(), data);
-    }
-
-    function setupRealtimeSync() {
-      onSnapshot(docRef(), (snap) => {
-        if (snap.exists()) {
-          window.spreadsheetData = snap.data();
-          if (typeof window.renderSpreadsheet === 'function') {
-            window.renderSpreadsheet();
-            const lu = document.getElementById('lastUpdated');
-            if (lu) lu.textContent = window.spreadsheetData.lastUpdated || lu.textContent;
-          }
-        }
-      });
-    }
-
-    function patchLocalSavers() {
-      const origSaveLocal = window.saveToLocalStorage;
-      if (typeof origSaveLocal === 'function') {
-        window.saveToLocalStorage = function() {
-          origSaveLocal.call(window);
-          // Also save to cloud
-          saveToCloud().catch(console.error);
-        };
-      }
-    }
-
-    function addShareAndViewOnly() {
-      // Add a "Share (view-only)" button
-      const btns = document.querySelector('.buttons');
-      if (btns && !document.getElementById('shareBtn')) {
-        const shareBtn = document.createElement('button');
-        shareBtn.id = 'shareBtn';
-        shareBtn.innerHTML = '<i class="fas fa-share"></i> Bagikan (lihat saja)';
-        shareBtn.addEventListener('click', () => {
-          const link = `${location.origin}${location.pathname}?doc=${getDocId()}&mode=view`;
-          navigator.clipboard.writeText(link)
-            .then(() => window.showToast ? window.showToast('Link tampilan-saja disalin') : alert('Link disalin: ' + link));
-        });
-        btns.appendChild(shareBtn);
-      }
-
-      // If opened with '?mode=view', hide all editing UI
-      const params = new URLSearchParams(location.search);
-      const viewOnly = params.get('mode') === 'view';
-      if (viewOnly) {
-        const hideEditing = () => {
-          document.querySelectorAll('#addLinkBtn,#addSectionBtn,.edit-link,.delete-link,.edit-section,.delete-section,.add-link-to-section,.form-actions .save')
-            .forEach(el => { if (el) el.style.display = 'none'; });
-        };
-        hideEditing();
-        const mo = new MutationObserver(hideEditing);
-        mo.observe(document.body, { childList: true, subtree: true });
-      }
-    }
-
-    document.addEventListener('DOMContentLoaded', async () => {
-      try {
+    // Initialize Firebase when DOM is loaded
+    document.addEventListener('DOMContentLoaded', async function() {
+        // Initialize Firebase
         await initFirebase();
-        patchLocalSavers();
-        await loadFromCloud(true);
-        setupRealtimeSync();
-        addShareAndViewOnly();
-      } catch (e) {
-        console.warn('Firebase not configured or failed to init. Cloud sync disabled.', e);
-        // Still add share & view-only UI (sharing local state is not possible, but view-only mode hides edit UI)
-        addShareAndViewOnly();
-      }
     });
-    </script>
-
+</script>
+    
 </body>
 </html>
