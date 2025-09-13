@@ -28,11 +28,11 @@
             width: 100%;
             max-width: 1200px;
             margin: 30px auto;
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.7); /* Lebih transparan */
+            backdrop-filter: blur(12px); /* Efek blur lebih kuat */
+            border: 1px solid rgba(255, 255, 255, 0.4); /* Border lebih terlihat */
+            border-radius: 20px; /* Border radius lebih besar */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             overflow: hidden;
         }
         
@@ -41,24 +41,69 @@
             text-align: center;
         }
 
-        .page-header img {
-            height: 80px;
+        .logo-container {
+            position: relative;
+            display: inline-block;
             margin-bottom: 20px;
+            border-radius: 12px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-header img {
+            height: 90px;
+            max-width: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
         }
         
+        .logo-container:hover img {
+            transform: scale(1.05);
+        }
+        
+        .change-logo-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.2s ease;
+        }
+
+        .logo-container:hover .change-logo-btn {
+            opacity: 1;
+            transform: translateY(-5px);
+        }
+
         h1 {
             font-size: 2.2rem;
             margin-bottom: 10px;
             color: #1e3a8a;
             font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
         
         .spreadsheet {
-            padding: 0 30px 30px 30px;
+            padding: 0 25px 25px 25px;
         }
         
         .section {
-            margin-bottom: 40px;
+            margin-bottom: 35px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
         }
         
         .section-header {
@@ -80,21 +125,21 @@
         
         .section-header i {
             margin-right: 12px;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
         }
         
         .link-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
         }
         
         .link-item {
-            padding: 20px;
-            background: white;
-            border-radius: 12px;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 22px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 14px;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.07);
             transition: all 0.3s ease;
             position: relative;
             display: flex;
@@ -103,9 +148,10 @@
         }
         
         .link-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            border-color: #c7d2fe;
+            transform: translateY(-7px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+            border-color: #a5b4fc;
+            background: white;
         }
         
         .link-content {
@@ -114,8 +160,8 @@
         }
 
         .link-icon {
-            font-size: 2rem;
-            margin-right: 15px;
+            font-size: 2.2rem;
+            margin-right: 18px;
             color: #3b82f6;
         }
 
@@ -123,72 +169,145 @@
             text-decoration: none;
             color: #1e3a8a;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             display: block;
+            word-break: break-word;
+            transition: color 0.2s;
         }
         
         .link-text a:hover {
+            color: #3b82f6;
             text-decoration: underline;
         }
         
         .link-description {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: #64748b;
-            margin-top: 4px;
+            margin-top: 6px;
+            line-height: 1.5;
         }
         
         .item-actions {
             position: absolute;
-            top: 15px;
-            right: 15px;
+            top: 18px;
+            right: 18px;
             display: flex;
-            gap: 8px;
+            gap: 10px;
             opacity: 0;
-            transition: opacity 0.2s;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateY(-10px);
         }
 
         .link-item:hover .item-actions {
             opacity: 1;
+            transform: translateY(0);
         }
         
         .item-actions button {
-            background: #f1f5f9;
+            background: #f8fafc;
             border: 1px solid #e2e8f0;
-            border-radius: 6px;
-            width: 30px;
-            height: 30px;
+            border-radius: 8px;
+            width: 34px;
+            height: 34px;
             cursor: pointer;
             color: #475569;
             transition: all 0.2s;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         
-        .item-actions button:hover {
-            background: #1e3a8a;
+        .item-actions button.edit-link {
+            color: #16a34a; /* Hijau untuk edit */
+        }
+        
+        .item-actions button.edit-link:hover {
+            background: #16a34a;
             color: white;
+            border-color: #16a34a;
+        }
+        
+        .item-actions button.delete-link {
+            color: #dc2626; /* Merah untuk hapus */
+        }
+        
+        .item-actions button.delete-link:hover {
+            background: #dc2626;
+            color: white;
+            border-color: #dc2626;
         }
         
         footer {
             text-align: center;
-            padding: 20px;
+            padding: 25px;
             background: transparent;
             color: #64748b;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            border-top: 1px solid rgba(226, 232, 240, 0.5);
         }
         
         @media (max-width: 768px) {
-            body { padding: 10px; }
-            h1 { font-size: 1.8rem; }
-            .spreadsheet { padding: 0 15px 15px 15px; }
-            .link-grid { grid-template-columns: 1fr; }
+            body { 
+                padding: 15px; 
+                display: block;
+            }
+            
+            .container {
+                margin: 20px auto;
+                border-radius: 18px;
+            }
+            
+            h1 { 
+                font-size: 1.8rem; 
+            }
+            
+            .page-header {
+                padding: 30px 15px;
+            }
+            
+            .spreadsheet { 
+                padding: 0 15px 15px 15px; 
+            }
+            
+            .link-grid { 
+                grid-template-columns: 1fr; 
+            }
+            
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+            
+            .search-box {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .search-box input {
+                width: 100%;
+            }
+            
+            .buttons {
+                justify-content: center;
+            }
+            
+            .buttons button {
+                flex: 1;
+                justify-content: center;
+            }
+            
+            .item-actions {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .search-box {
-            padding: 20px 30px;
-            background: rgba(241, 245, 249, 0.7);
-            border-bottom: 1px solid #e2e8f0;
+            padding: 22px;
+            background: rgba(241, 245, 249, 0.6);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.7);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -197,95 +316,267 @@
         }
         
         .search-box input {
-            padding: 10px 15px;
+            padding: 12px 18px;
             border: 1px solid #cbd5e1;
-            border-radius: 8px;
-            width: 280px;
+            border-radius: 10px;
+            width: 300px;
             font-size: 1rem;
             background: white;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
         }
         
         .buttons {
             display: flex;
-            gap: 10px;
+            gap: 12px;
             flex-wrap: wrap;
         }
         
         .buttons button {
-            padding: 10px 15px;
+            padding: 12px 18px;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.3s;
             display: flex;
             align-items: center;
             gap: 8px;
             font-weight: 500;
+            white-space: nowrap;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         
         .buttons button:hover {
-            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 10px rgba(0,0,0,0.15);
         }
 
-        #addLinkBtn { background: #3b82f6; color: white; }
-        #addSectionBtn { background: #10b981; color: white; }
-        #exportBtn { background: #64748b; color: white; }
+        #addLinkBtn { 
+            background: #3b82f6; 
+            color: white; 
+        }
+        
+        #addSectionBtn { 
+            background: #10b981; 
+            color: white; 
+        }
+        
+        #exportBtn { 
+            background: #64748b; 
+            color: white; 
+        }
         
         /* Modal styles */
         .modal {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.5); z-index: 1000; justify-content: center; align-items: center;
+            display: none; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); 
+            z-index: 1000; 
+            justify-content: center; 
+            align-items: center;
+            padding: 20px;
         }
-        .modal-content {
-            background: white; padding: 25px; border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); width: 90%; max-width: 500px;
-        }
-        .modal-header {
-            display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;
-            padding-bottom: 15px; border-bottom: 1px solid #eee;
-        }
-        .modal-header h2 { color: #1e3a8a; }
-        .close { font-size: 1.5rem; cursor: pointer; color: #999; }
-        .close:hover { color: #333; }
-        .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; margin-bottom: 5px; font-weight: 500; color: #555; }
-        .form-group input, .form-group textarea, .form-group select {
-            width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem;
-        }
-        .form-group textarea { min-height: 80px; resize: vertical; }
-        .form-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
-        .form-actions button {
-            padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; font-weight: 500;
-        }
-        .form-actions button.cancel { background: #e2e8f0; color: #475569; }
-        .form-actions button.cancel:hover { background: #cbd5e1; }
-        .form-actions button.save, .form-actions button.confirm { background: #1e3a8a; color: white; }
-        .form-actions button.confirm.danger { background: #e74c3c; }
-        .form-actions button.save:hover, .form-actions button.confirm:hover { background: #1c347a; }
-        .form-actions button.confirm.danger:hover { background: #c0392b; }
         
-        .section-actions { display: flex; gap: 10px; }
-        .section-actions button {
-            background: transparent; border: none; cursor: pointer; color: #3b82f6; font-size: 1rem;
+        .modal-content {
+            background: white; 
+            padding: 28px; 
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); 
+            width: 100%; 
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .modal-header {
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            margin-bottom: 22px;
+            padding-bottom: 18px; 
+            border-bottom: 1px solid #eee;
+        }
+        
+        .modal-header h2 { 
+            color: #1e3a8a; 
+            font-size: 1.6rem;
+        }
+        
+        .close { 
+            font-size: 1.6rem; 
+            cursor: pointer; 
+            color: #999; 
+            background: none;
+            border: none;
+            padding: 0;
             transition: color 0.2s;
         }
-        .section-actions button:hover { color: #1e3a8a; }
+        
+        .close:hover { 
+            color: #333; 
+        }
+        
+        .form-group { 
+            margin-bottom: 18px; 
+        }
+        
+        .form-group label { 
+            display: block; 
+            margin-bottom: 6px; 
+            font-weight: 500; 
+            color: #555; 
+        }
+        
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%; 
+            padding: 12px; 
+            border: 1px solid #ddd; 
+            border-radius: 10px; 
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+        }
+        
+        .form-group textarea { 
+            min-height: 90px; 
+            resize: vertical; 
+        }
+        
+        .form-actions { 
+            display: flex; 
+            justify-content: flex-end; 
+            gap: 12px; 
+            margin-top: 22px; 
+        }
+        
+        .form-actions button {
+            padding: 12px 22px; 
+            border: none; 
+            border-radius: 10px; 
+            cursor: pointer; 
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        
+        .form-actions button.cancel { 
+            background: #e2e8f0; 
+            color: #475569; 
+        }
+        
+        .form-actions button.cancel:hover { 
+            background: #cbd5e1; 
+        }
+        
+        .form-actions button.save, .form-actions button.confirm { 
+            background: #1e3a8a; 
+            color: white; 
+        }
+        
+        .form-actions button.confirm.danger { 
+            background: #e74c3c; 
+        }
+        
+        .form-actions button.save:hover, .form-actions button.confirm:hover { 
+            background: #1c347a; 
+        }
+        
+        .form-actions button.confirm.danger:hover { 
+            background: #c0392b; 
+        }
+        
+        .section-actions { 
+            display: flex; 
+            gap: 12px; 
+        }
+        
+        .section-actions button {
+            background: transparent; 
+            border: none; 
+            cursor: pointer; 
+            color: #3b82f6; 
+            font-size: 1.1rem;
+            transition: color 0.2s;
+            padding: 6px;
+            border-radius: 6px;
+        }
+        
+        .section-actions button:hover { 
+            color: #1e3a8a; 
+            background: rgba(59, 130, 246, 0.1);
+        }
 
         .toast {
-            position: fixed; bottom: 20px; right: 20px; padding: 15px 20px; background: #2ecc71;
-            color: white; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); opacity: 0;
-            transition: opacity 0.3s, transform 0.3s; transform: translateY(20px); z-index: 1001;
+            position: fixed; 
+            bottom: 25px; 
+            right: 25px; 
+            padding: 16px 22px; 
+            background: #2ecc71;
+            color: white; 
+            border-radius: 10px; 
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); 
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s; 
+            transform: translateY(20px); 
+            z-index: 1001;
+            max-width: 320px;
         }
-        .toast.show { opacity: 1; transform: translateY(0); }
-        .toast.error { background: #e74c3c; }
-        .empty-state { text-align: center; padding: 40px; color: #64748b; background: #f8fafc; border-radius: 12px; }
-        .empty-state i { font-size: 3rem; margin-bottom: 15px; color: #94a3b8; }
+        
+        .toast.show { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
+        
+        .toast.error { 
+            background: #e74c3c; 
+        }
+        
+        .empty-state { 
+            text-align: center; 
+            padding: 45px; 
+            color: #64748b; 
+            background: #f8fafc; 
+            border-radius: 14px; 
+            border: 1px dashed #cbd5e1;
+        }
+        
+        .empty-state i { 
+            font-size: 3.2rem; 
+            margin-bottom: 18px; 
+            color: #94a3b8; 
+        }
+        
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 25px;
+            color: #64748b;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="page-header">
-            <img src="https://storage.googleapis.com/maker-media-feed-prod/USER_UPLOADED_FILE_503e1ac8-615e-4975-ba79-217773a6578f/sulaimaniyah_dikey.png" alt="Logo Sulaimaniyah">
+            <div class="logo-container">
+                <img id="logoImage" src="https://storage.googleapis.com/maker-media-feed-prod/USER_UPLOADED_FILE_503e1ac8-615e-4975-ba79-217773a6578f/sulaimaniyah_dikey.png" alt="Logo Sulaimaniyah">
+                <button id="changeLogoBtn" class="change-logo-btn" title="Ganti Logo"><i class="fas fa-camera"></i></button>
+            </div>
+            <input type="file" id="logoInput" accept="image/*" style="display: none;">
             <h1>SULAIMANIYAH HAJI ANIF TUNTUNGAN YURDU TAKIP LİNKLERİ</h1>
         </div>
         
@@ -311,12 +602,12 @@
         </footer>
     </div>
 
-    <!-- Modals (structure unchanged, only styles are affected) -->
+    <!-- Modals -->
     <div class="modal" id="linkModal">
         <div class="modal-content">
             <div class="modal-header">
                 <h2 id="modalTitle">Tambah Link Baru</h2>
-                <span class="close">&times;</span>
+                <button class="close">&times;</button>
             </div>
             <div class="modal-body">
                 <div class="form-group">
@@ -347,7 +638,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h2 id="sectionModalTitle">Tambah Bagian Baru</h2>
-                <span class="close">&times;</span>
+                <button class="close">&times;</button>
             </div>
             <div class="modal-body">
                 <div class="form-group">
@@ -379,7 +670,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h2>Konfirmasi</h2>
-                <span class="close">&times;</span>
+                <button class="close">&times;</button>
             </div>
             <div class="modal-body">
                 <p id="confirmMessage"></p>
@@ -396,12 +687,21 @@
     <script type="module">
         // Firebase Imports
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, setDoc, onSnapshot, setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
         
         // --- Firebase Configuration ---
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+        const firebaseConfig = {
+            apiKey: "AIzaSyAuC6SCl5d13Hidawt1xMaHYx2t0FKX7mc",
+            authDomain: "takip-linkleri-free.firebaseapp.com",
+            projectId: "takip-linkleri-free",
+            storageBucket: "takip-linkleri-free.firebasestorage.app",
+            messagingSenderId: "336976957516",
+            appId: "1:336976957516:web:17fb1536a8fed937e964e9"
+        };
+        
+        // ID unik untuk aplikasi ini di Firestore, bisa diganti sesuai keinginan
+        const appId = 'sulaimaniyah-link-manager-v1';
 
         let app, db, auth;
         let unsubscribe;
@@ -411,6 +711,7 @@
 
         // --- DOM Elements ---
         const spreadsheetEl = document.getElementById('spreadsheet');
+        const logoImage = document.getElementById('logoImage');
 
         // --- Initialization ---
         document.addEventListener('DOMContentLoaded', async () => {
@@ -418,13 +719,8 @@
                 app = initializeApp(firebaseConfig);
                 db = getFirestore(app);
                 auth = getAuth(app);
-                setLogLevel('debug');
 
-                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                    await signInWithCustomToken(auth, __initial_auth_token);
-                } else {
-                    await signInAnonymously(auth);
-                }
+                await signInAnonymously(auth);
                 
                 setupFirestoreListener();
                 setupEventListeners();
@@ -434,53 +730,145 @@
                     <div class="empty-state">
                         <i class="fas fa-exclamation-triangle"></i>
                         <h3>Gagal memuat data</h3>
-                        <p>Tidak dapat terhubung ke database. Silakan coba lagi nanti.</p>
+                        <p>Pastikan konfigurasi Firebase sudah benar. Cek console untuk error.</p>
+                        <p>Menggunakan data lokal sebagai fallback...</p>
                     </div>`;
+                    
+                // Load fallback data
+                loadFallbackData();
+                renderSpreadsheet();
             }
         });
 
+        function loadFallbackData() {
+            spreadsheetData = {
+                "logoSrc": "https://storage.googleapis.com/maker-media-feed-prod/USER_UPLOADED_FILE_503e1ac8-615e-4975-ba79-217773a6578f/sulaimaniyah_dikey.png",
+                "sections": [
+                    { 
+                        "id": "section2", 
+                        "title": "SEKRETERYA BİRİMİ", 
+                        "icon": "📁", 
+                        "links": [ 
+                            { 
+                                "id": "link1756431920541", 
+                                "title": "YILLIK İZİN TAKİP LİNKİ", 
+                                "url": "https://docs.google.com/spreadsheets/d/1gjW8YixWQ5cwUjJGD4HFCwCLOhOshSlOc3OD9S0KScM/edit?gid=0#gid=0", 
+                                "description": "DATA IZIN PERSONEL TUNTUNGAN" 
+                            } 
+                        ] 
+                    },
+                    { 
+                        "id": "section1756431986365", 
+                        "title": "MALİ İİŞLER BİRİMİ", 
+                        "icon": "💰", 
+                        "links": [ 
+                            { 
+                                "id": "link1756432835838", 
+                                "title": "SADAKA KUTUSU LİNKİ", 
+                                "url": "https://docs.google.com/spreadsheets/u/0/d/1uonoE2yEtb7fJjrSZYR7uVoRUvV9-T2eg_OwhbQjJ_Q/edit", 
+                                "description": "DATA KOTAK AMAL PESANTREN" 
+                            }, 
+                            { 
+                                "id": "link1756432887072", 
+                                "title": "SADA KUTUSU ALMA TAKİP LİNKİ", 
+                                "url": "https://docs.google.com/spreadsheets/u/0/d/1pTYWZiG6HtxolFzHReiJJvP4xInJBdJuup-OyWdYF_w/edit", 
+                                "description": "DATA PENGAMBILAN KOTAK AMAL PESANTREN" 
+                            }, 
+                            { 
+                                "id": "link1756432925313", 
+                                "title": "AİDAT TAKİBİ", 
+                                "url": "https://docs.google.com/spreadsheets/d/188ZS5i1oniXXm_lzZjG0JQRgg6P-qWbZ0d70hCxZqu8/edit?gid=0#gid=0", 
+                                "description": "DATA PEMBAYARAN SPP SANTRI" 
+                            }, 
+                            { 
+                                "id": "link1756432957145", 
+                                "title": "TEBERRU TAKİBİ", 
+                                "url": "https://docs.google.com/spreadsheets/d/1YqoMyC3FPNavxQsRBXMwj-Op__nIzOpIKXwmQJRjuNs/edit?gid=384116160#gid=384116160", 
+                                "description": "DATA TEBERRU PERSONEL " 
+                            } 
+                        ] 
+                    },
+                    { 
+                        "id": "section1756432978431", 
+                        "title": "RESMİ İŞLER BİRİMİ", 
+                        "icon": "📋", 
+                        "links": [ 
+                            { 
+                                "id": "link1756433019782", 
+                                "title": "BPJS TAKİBİ", 
+                                "url": "https://docs.google.com/spreadsheets/u/0/d/1sIa2B6_7Msxl2gjPXdcoSh142L8HKJbooS1UWvjrsi0/edit", 
+                                "description": "DATA PEMBAYARAN BPJS PERSONEL" 
+                            } 
+                        ] 
+                    },
+                    { 
+                        "id": "section1756696018651", 
+                        "title": "İRŞADİ BİRİMİ", 
+                        "icon": "👥", 
+                        "links": [ 
+                            { 
+                                "id": "link1756696104602", 
+                                "title": "HOCA EFENDİ SABAH NAMAZI DURUMU", 
+                                "url": "https://docs.google.com/spreadsheets/d/1rxd-SJfIyB73bAWT4JrWqsJYFg8uEBDgPgl7M4j7pJA/edit?gid=543286161#gid=543286161", 
+                                "description": "ABSENSI SHLAT SUBUH BERJAMAAH PERSONEL" 
+                            }, 
+                            { 
+                                "id": "link1756696164681", 
+                                "title": "HOCA EFENDİ VAZİFE DURUMU", 
+                                "url": "https://docs.google.com/spreadsheets/d/1_IoOUb0NR1Xfz2uII8AyJfb4zPqWJL3eDL1d-0xAAu8/edit?gid=1063690320#gid=1063690320", 
+                                "description": "ABSENSI VAZİFE HARIAN PERSONEL" 
+                            } 
+                        ] 
+                    }
+                ],
+                "lastUpdated": new Date().toLocaleDateString('id-ID', {
+                    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+                })
+            };
+        }
 
         // --- Firestore Real-time Listener ---
         function setupFirestoreListener() {
-            const docRef = doc(db, `artifacts/${appId}/public/data/links/main`);
+            const docRef = doc(db, `apps/${appId}/data/main`);
             
             unsubscribe = onSnapshot(docRef, (docSnap) => {
                 if (docSnap.exists() && docSnap.data().sections) {
                     spreadsheetData = docSnap.data();
                 } else {
                     console.log("No document found in Firestore. Initializing with provided data.");
-                    spreadsheetData = {
-                         "sections": [
-                             { "id": "section2", "title": "SEKRETERYA BİRİMİ", "icon": "📁", "links": [ { "id": "link1756431920541", "title": "YILLIK İZİN TAKİP LİNKİ", "url": "https://docs.google.com/spreadsheets/d/1gjW8YixWQ5cwUjJGD4HFCwCLOhOshSlOc3OD9S0KScM/edit?gid=0#gid=0", "description": "DATA IZIN PERSONEL TUNTUNGAN" } ] },
-                             { "id": "section1756431986365", "title": "MALİ İİŞLER BİRİMİ", "icon": "💰", "links": [ { "id": "link1756432835838", "title": "SADAKA KUTUSU LİNKİ", "url": "https://docs.google.com/spreadsheets/u/0/d/1uonoE2yEtb7fJjrSZYR7uVoRUvV9-T2eg_OwhbQjJ_Q/edit", "description": "DATA KOTAK AMAL PESANTREN" }, { "id": "link1756432887072", "title": "SADA KUTUSU ALMA TAKİP LİNKİ", "url": "https://docs.google.com/spreadsheets/u/0/d/1pTYWZiG6HtxolFzHReiJJvP4xInJBdJuup-OyWdYF_w/edit", "description": "DATA PENGAMBILAN KOTAK AMAL PESANTREN" }, { "id": "link1756432925313", "title": "AİDAT TAKİBİ", "url": "https://docs.google.com/spreadsheets/d/188ZS5i1oniXXm_lzZjG0JQRgg6P-qWbZ0d70hCxZqu8/edit?gid=0#gid=0", "description": "DATA PEMBAYARAN SPP SANTRI" }, { "id": "link1756432957145", "title": "TEBERRU TAKİBİ", "url": "https://docs.google.com/spreadsheets/d/1YqoMyC3FPNavxQsRBXMwj-Op__nIzOpIKXwmQJRjuNs/edit?gid=384116160#gid=384116160", "description": "DATA TEBERRU PERSONEL " } ] },
-                             { "id": "section1756432978431", "title": "RESMİ İŞLER BİRİMİ", "icon": "📋", "links": [ { "id": "link1756433019782", "title": "BPJS TAKİBİ", "url": "https://docs.google.com/spreadsheets/u/0/d/1sIa2B6_7Msxl2gjPXdcoSh142L8HKJbooS1UWvjrsi0/edit", "description": "DATA PEMBAYARAN BPJS PERSONEL" } ] },
-                             { "id": "section1756696018651", "title": "İRŞADİ BİRİMİ", "icon": "👥", "links": [ { "id": "link1756696104602", "title": "HOCA EFENDİ SABAH NAMAZI DURUMU", "url": "https://docs.google.com/spreadsheets/d/1rxd-SJfIyB73bAWT4JrWqsJYFg8uEBDgPgl7M4j7pJA/edit?gid=543286161#gid=543286161", "description": "ABSENSI SHLAT SUBUH BERJAMAAH PERSONEL" }, { "id": "link1756696164681", "title": "HOCA EFENDİ VAZİFE DURUMU", "url": "https://docs.google.com/spreadsheets/d/1_IoOUb0NR1Xfz2uII8AyJfb4zPqWJL3eDL1d-0xAAu8/edit?gid=1063690320#gid=1063690320", "description": "ABSENSI VAZİFE HARIAN PERSONEL" } ] }
-                           ],
-                           "lastUpdated": "Kamis, 11 September 2025"
-                         };
+                    loadFallbackData();
                     saveDataToFirestore(); 
+                }
+                if (spreadsheetData.logoSrc) {
+                    logoImage.src = spreadsheetData.logoSrc;
                 }
                 renderSpreadsheet();
                 document.getElementById('lastUpdated').textContent = spreadsheetData.lastUpdated;
             }, (error) => {
                 console.error("Error listening to Firestore:", error);
-                showToast("Gagal menyinkronkan data.", true);
+                showToast("Gagal menyinkronkan data. Menggunakan data lokal.", true);
+                loadFallbackData();
+                renderSpreadsheet();
             });
         }
         
         // --- Data Persistence ---
         async function saveDataToFirestore() {
             if (!db) {
-                showToast("Database tidak terhubung.", true);
+                showToast("Database tidak terhubung. Data disimpan secara lokal.", true);
+                // Simpan ke localStorage sebagai fallback
+                localStorage.setItem(`${appId}_data`, JSON.stringify(spreadsheetData));
                 return;
             }
             try {
-                const docRef = doc(db, `artifacts/${appId}/public/data/links/main`);
+                const docRef = doc(db, `apps/${appId}/data/main`);
                 await setDoc(docRef, spreadsheetData, { merge: true });
                 console.log("Data saved to Firestore.");
             } catch (error) {
                 console.error("Error saving data to Firestore:", error);
-                showToast("Gagal menyimpan perubahan.", true);
+                showToast("Gagal menyimpan perubahan. Data disimpan secara lokal.", true);
+                // Simpan ke localStorage sebagai fallback
+                localStorage.setItem(`${appId}_data`, JSON.stringify(spreadsheetData));
             }
         }
 
@@ -570,16 +958,29 @@
         function setupEventListeners() {
             document.getElementById('searchInput').addEventListener('input', (e) => {
                 const searchText = e.target.value.toLowerCase();
+                let hasVisibleItems = false;
+                
                 document.querySelectorAll('.link-item').forEach(item => {
-                    const section = item.closest('.section');
-                    const isVisible = item.textContent.toLowerCase().includes(searchText);
+                    const title = item.querySelector('a').textContent.toLowerCase();
+                    const description = item.querySelector('.link-description').textContent.toLowerCase();
+                    const isVisible = title.includes(searchText) || description.includes(searchText);
                     item.style.display = isVisible ? '' : 'none';
+                    
+                    if (isVisible) hasVisibleItems = true;
                 });
 
-                 document.querySelectorAll('.section').forEach(section => {
-                    const visibleItems = section.querySelectorAll('.link-item:not([style*="display: none"])');
-                    section.style.display = visibleItems.length > 0 ? '' : 'none';
-                });
+                // Tampilkan pesan jika tidak ada hasil
+                const existingNoResults = document.querySelector('.no-results');
+                if (!hasVisibleItems && searchText) {
+                    if (!existingNoResults) {
+                        const noResults = document.createElement('div');
+                        noResults.className = 'no-results';
+                        noResults.innerHTML = `<p><i class="fas fa-search"></i> Tidak ditemukan hasil untuk "${searchText}"</p>`;
+                        spreadsheetEl.appendChild(noResults);
+                    }
+                } else if (existingNoResults) {
+                    existingNoResults.remove();
+                }
             });
             
             document.getElementById('addLinkBtn').addEventListener('click', () => openLinkModal());
@@ -592,10 +993,23 @@
             
             document.getElementById('saveLinkBtn').addEventListener('click', saveLink);
             document.getElementById('saveSectionBtn').addEventListener('click', saveSection);
+
+            // Logo change listeners
+            document.getElementById('changeLogoBtn').addEventListener('click', () => {
+                document.getElementById('logoInput').click();
+            });
+            document.getElementById('logoInput').addEventListener('change', handleLogoChange);
+            
+            // Close modal when clicking outside
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) closeModals();
+                });
+            });
         }
 
         function setupDynamicEventListeners() {
-             document.querySelectorAll('.edit-link, .delete-link, .edit-section, .delete-section').forEach(button => {
+            document.querySelectorAll('.edit-link, .delete-link, .edit-section, .delete-section').forEach(button => {
                 button.addEventListener('click', function(event) {
                     const { link, section } = this.dataset;
                     if (this.classList.contains('edit-link')) openLinkModal(link, section);
@@ -605,6 +1019,30 @@
                 });
             });
         }
+
+        // --- Logo Handling ---
+        function handleLogoChange(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            // Validasi tipe file
+            if (!file.type.startsWith('image/')) {
+                showToast('Harap pilih file gambar', true);
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const newLogoSrc = e.target.result;
+                logoImage.src = newLogoSrc;
+                spreadsheetData.logoSrc = newLogoSrc;
+                updateLastUpdated();
+                saveDataToFirestore();
+                showToast('Logo berhasil diganti');
+            };
+            reader.readAsDataURL(file);
+        }
+
 
         // --- Modal Logic ---
         function openLinkModal(linkId = null, sectionId = null) {
@@ -667,18 +1105,19 @@
             const confirmHandler = () => {
                 onConfirm();
                 closeModals();
-                confirmBtn.removeEventListener('click', confirmHandler);
-                modal.querySelector('.cancel').removeEventListener('click', cancelHandler);
             };
 
             const cancelHandler = () => {
                  closeModals();
-                 confirmBtn.removeEventListener('click', confirmHandler);
-                 modal.querySelector('.cancel').removeEventListener('click', cancelHandler);
             }
             
-            confirmBtn.addEventListener('click', confirmHandler, { once: true });
-            modal.querySelector('.cancel').addEventListener('click', cancelHandler, { once: true });
+            // Hapus event listener sebelumnya untuk menghindari duplikasi
+            confirmBtn.replaceWith(confirmBtn.cloneNode(true));
+            document.getElementById('confirmCancelBtn').replaceWith(document.getElementById('confirmCancelBtn').cloneNode(true));
+            
+            // Tambahkan event listener baru
+            document.getElementById('confirmOkBtn').addEventListener('click', confirmHandler);
+            document.getElementById('confirmCancelBtn').addEventListener('click', cancelHandler);
             
             modal.style.display = 'flex';
         }
@@ -772,7 +1211,7 @@
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'spreadsheet-data.json';
+            a.download = 'sulaimaniyah-link-data.json';
             a.click();
             URL.revokeObjectURL(url);
             showToast('Data berhasil diekspor');
@@ -787,8 +1226,19 @@
         }
 
         function isValidUrl(url) {
-            try { return new URL(url).protocol.startsWith("http"); } 
-            catch { return false; }
+            try { 
+                // Tambahkan https:// jika tidak ada protocol
+                const urlObj = new URL(url);
+                return urlObj.protocol.startsWith("http"); 
+            } catch { 
+                // Coba tambahkan https:// dan test lagi
+                try {
+                    new URL('https://' + url);
+                    return true;
+                } catch {
+                    return false;
+                }
+            }
         }
 
         function showToast(message, isError = false) {
@@ -809,4 +1259,3 @@
     </script>
 </body>
 </html>
-
